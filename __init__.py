@@ -1,6 +1,6 @@
 import os
 import streamlit.components.v1 as components
-from register import register_callback,init
+# from register import register_callback,init
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
 # the component, and True when we're ready to package and distribute it.
@@ -44,11 +44,11 @@ else:
 # `declare_component` and call it done. The wrapper allows us to customize
 # our component's API: we can pre-process its input args, post-process its
 # output value, and add a docstring for users.
-init()
-def myFunc(menu, key=None, on_select=None, args:tuple=()):
-    register_callback(key, on_select, *args)
+# init()
+def myFunc(options=[], key=None, on_select=None, args:tuple=()):
+    # register_callback(key, on_select, *args)
 
-    component_value = _component_func(options=menu, key=key, default=0)
+    component_value = _component_func(options=options, key=key, default=0)
     # We could modify the value returned from the component if we wanted.
     # There's no need to do this in our simple example - but it's an option.
     return component_value
@@ -62,57 +62,57 @@ if not _RELEASE:
 
     st.subheader("Menu Component")
 
-    menu = [
-        {
-            "id": 1,
-            "label": "Inbox",
-            "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000",
-            "child": [
-                {
-                    "id": 2,
-                    "label": "Starred",
-                    "icon": "none",
-                    "child": "none"
-                },
-                {
-                    "id": 3,
-                    "label": "Sent",
-                    "icon": "https://toppng.com/uploads/preview/email-send-icon-11549825116mekvlqcvjt.png",
-                    "child": "none"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "label": "Settings",
-            "icon": "none",
-            "child": [
-                {
-                    "id": 5,
-                    "label": "Profile",
-                    "icon": "none",
-                    "child": "none"
-                },
-                {
-                    "id": 6,
-                    "label": "Theme",
-                    "icon": "none",
-                    "child": "none"
-                }
-            ]
-        },
-        {"id": 7, "label": "Draft", "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000", "child": "none"},
-        {"id": 8, "label": "Bin", "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000", "child": "none"},
-        {"id": 9, "label": "Logout", "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000", "child": "none"},
-    ],
+    # menu = [
+    #     {
+    #         "id": 1,
+    #         "label": "Inbox",
+    #         "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000",
+    #         "child": [
+    #             {
+    #                 "id": 2,
+    #                 "label": "Starred",
+    #                 "icon": "none",
+    #                 "child": "none"
+    #             },
+    #             {
+    #                 "id": 3,
+    #                 "label": "Sent",
+    #                 "icon": "https://toppng.com/uploads/preview/email-send-icon-11549825116mekvlqcvjt.png",
+    #                 "child": "none"
+    #             }
+    #         ]
+    #     },
+    #     {
+    #         "id": 4,
+    #         "label": "Settings",
+    #         "icon": "none",
+    #         "child": [
+    #             {
+    #                 "id": 5,
+    #                 "label": "Profile",
+    #                 "icon": "none",
+    #                 "child": "none"
+    #             },
+    #             {
+    #                 "id": 6,
+    #                 "label": "Theme",
+    #                 "icon": "none",
+    #                 "child": "none"
+    #             }
+    #         ]
+    #     },
+    #     {"id": 7, "label": "Draft", "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000", "child": "none"},
+    #     {"id": 8, "label": "Bin", "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000", "child": "none"},
+    #     {"id": 9, "label": "Logout", "icon": "https://img.freepik.com/free-icon/inbox_318-565945.jpg?w=2000", "child": "none"},
+    # ],
     # # Create an instance of our component with a constant `name` arg, and
     
-    def on_menu_select (widgetkey): 
-        print(st.session_state[widgetkey])
+    # def on_menu_select (widgetkey): 
+    #     print(st.session_state[widgetkey])
 
-    with st.sidebar:
-        if "sidemenu" in st.session_state:
-            st.write(f"""Hi {st.session_state["sidemenu"]}""", )
+    # with st.sidebar:
+    #     if "sidemenu" in st.session_state:
+    #         st.write(f"""Hi {st.session_state["sidemenu"]}""", )
 
         # if st.session_state["selectedMenu"] == "profile":
         #     #  load profile page
@@ -121,5 +121,5 @@ if not _RELEASE:
         #     # goto home page
         #     pass           
 
-        myFunc(menu, key="sidemenu", on_select=on_menu_select, args=("sidemenu",))
-    st.write('You have selected: ', st.session_state["sidemenu"])
+    myFunc()
+    st.write('You have selected: ')
