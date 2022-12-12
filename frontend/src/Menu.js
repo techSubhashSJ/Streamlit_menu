@@ -1,13 +1,85 @@
 import { useEffect } from "react";
 import * as React from "react";
 import { Streamlit, withStreamlitConnection } from "streamlit-component-lib";
+import { styled, useStyletron } from "baseui";
+import MenuBody from "./MenuBody";
+import { StyledDivider, SIZE } from "baseui/divider";
+import MenuHeader from "./MenuHeader";
 
-const Menu = () => {
+const Menu = (props) => {
+  const [activeMenuId, setActiveMenuId] = React.useState(null);
+
+  const {
+    menuWrapperStyle,
+    menuHeader,
+    submenuStyle,
+    mainMenuStyle,
+    menuData,
+  } = props.args.menu;
+
   useEffect(() => {
-    Streamlit.setFrameHeight(600);
+    Streamlit.setFrameHeight(1000);
   }, []);
 
-  return <div>Hello World</div>;
+  const [css] = useStyletron();
+
+  return (
+    <MenuWrapper
+      backgroundColor={menuWrapperStyle.backgroundColor}
+      color={menuWrapperStyle.text}
+      borderRadius={menuWrapperStyle.borderRadius}
+    >
+      <MenuHeader
+        appLogo={menuHeader.data.logo}
+        appName={menuHeader.data.title}
+        styles={menuHeader.styles}
+      />
+
+      <div>
+        <StyledDivider
+          $size={SIZE.section}
+          className={css({
+            marginLeft: "1rem",
+            marginRight: "1rem",
+          })}
+        />
+      </div>
+
+      {menuData.map(({ icon, title, child, id }, index) => (
+        <MenuBody
+          key={index}
+          active={id == activeMenuId}
+          activeMenuId={activeMenuId}
+          setActiveMenuId={setActiveMenuId}
+          title={title}
+          child={child}
+          id={id}
+          collapsable={props.args.collapsable}
+          submenuStyle={submenuStyle}
+          mainMenuStyle={mainMenuStyle}
+        >
+          <img
+            className={css({
+              width: "1.5rem",
+              height: "1.5rem",
+              marginRight: "0.5rem",
+            })}
+            src={`data:image/png;base64, ${icon}`}
+            alt="logo"
+          />
+        </MenuBody>
+      ))}
+    </MenuWrapper>
+  );
 };
 
 export default withStreamlitConnection(Menu);
+
+const MenuWrapper = styled("div", (props) => ({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  height: "100vh",
+  background: props.backgroundColor ? props.backgroundColor : "#fff",
+  borderRadius: props.borderRadius ? props.borderRadius : "2px",
+}));
