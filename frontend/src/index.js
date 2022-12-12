@@ -3,11 +3,26 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Menu from "./Menu";
 import reportWebVitals from "./reportWebVitals";
+import { Client as Styletron } from "styletron-engine-atomic";
+import { Provider as StyletronProvider } from "styletron-react";
+import { LightTheme, BaseProvider, styled } from "baseui";
+
+const engine = new Styletron();
+const Centered = styled("div", {
+  display: "flex",
+  height: "100%",
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Menu />
+    <StyletronProvider value={engine}>
+      <BaseProvider theme={LightTheme}>
+        <Centered>
+          <Menu />
+        </Centered>
+      </BaseProvider>
+    </StyletronProvider>
   </React.StrictMode>
 );
 
