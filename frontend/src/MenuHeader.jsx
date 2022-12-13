@@ -8,9 +8,9 @@ const MenuHeader = (props) => {
 
   return (
     <Logo
-      justify={styles.justify}
-      fontFamily={styles.fontFamily}
-      color={styles.color}
+      justify={styles?.justify}
+      fontFamily={styles?.fontFamily}
+      color={styles?.color}
     >
       <img
         className={css({
@@ -32,8 +32,10 @@ const Logo = styled("div", (props) => ({
   padding: "1rem 2rem",
   display: "flex",
   alignItems: "center",
-  justifyContent: props.justify ? props.justify: "center",
-  fontFamily: props.fontFamily ?? '"Times New Roman", Times, serif',
+  justifyContent: props.justify ? props.justify : "start",
+  fontFamily: props.fontFamily
+    ? props.fontFamily
+    : '"Times New Roman", Times, serif',
   fontSize: "1.25rem",
   fontWeight: "bold",
   boxSizing: "border-box",
