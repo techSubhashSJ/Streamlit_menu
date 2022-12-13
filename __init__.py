@@ -1,6 +1,5 @@
 import os
 import streamlit.components.v1 as components
-import assets.icons.setting
 import assets.app_logo.logo
 import assets.menu_data.menu
 from register import register_callback, init
@@ -27,7 +26,7 @@ if not _RELEASE:
         # We give the component a simple, descriptive name ("my_component"
         # does not fit this bill, so please choose something better for your
         # own component :)
-        "App",
+        "Menu",
         # Pass `url` here to tell Streamlit that the component will be served
         # by the local dev server that you run via `npm run start`.
         # (This is useful while your component is in development.)
@@ -39,7 +38,7 @@ else:
     # build directory:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("App", path=build_dir)
+    _component_func = components.declare_component("Menu", path=build_dir)
 
 # Create a wrapper function for the component. This is an optional
 # best practice - we could simply expose the component function returned by
@@ -54,7 +53,7 @@ def myFunc(menu, collapsable="true", key=None, on_select=None, args: tuple = ())
     register_callback(key, on_select, *args)
 
     component_value = _component_func(menu=menu,
-                                      logo=logo, title=title, collapsable=collapsable, key=key, default=0)
+                                      collapsable=collapsable, key=key, default=0)
     # We could modify the value returned from the component if we wanted.
     # There's no need to do this in our simple example - but it's an option.
     return component_value

@@ -29,7 +29,6 @@ const Submenu = ({
         <div
           className={css({
             display: "flex",
-            alignItems: "center",
           })}
         >
           {children}
@@ -37,31 +36,13 @@ const Submenu = ({
         </div>
         <div
           className={css({
-            display: collapsable === "true" ? "flex" : "none",
-            color: "black",
-            paddingLeft: "30px",
-            flexDirection: "column",
-            overflow: "hidden",
+            display: collapsable === "true" ? "block" : "none",
           })}
         >
           {collapsable === "true" && open ? (
-            <ChevronDown
-              size={25}
-              className={css({
-                backgroundColor: `${
-                  mainMenuStyle?.color ? mainMenuStyle?.color : "none"
-                }`,
-              })}
-            />
+            <i className="fa-solid fa-angle-down"></i>
           ) : (
-            <ChevronUp
-              size={25}
-              className={css({
-                backgroundColor: `${
-                  mainMenuStyle?.color ? mainMenuStyle?.color : "none"
-                }`,
-              })}
-            />
+            <i className="fa-solid fa-angle-up"></i>
           )}
         </div>
       </StyledSubMenuParent>
@@ -87,16 +68,15 @@ const Submenu = ({
               setActiveMenuId(id);
             }}
           >
-            <img
+            <div
               className={css({
-                width: "1rem",
-                height: "1rem",
+                width: "1.5rem",
+                height: "1.5rem",
                 marginRight: "0.5rem",
-                color: "red",
               })}
-              src={`data:image/png;base64, ${icon}`}
-              alt="logo"
-            />
+            >
+              <i className={icon} />
+            </div>
             {title}
           </StyledSubMenuItem>
         ))}
@@ -109,7 +89,9 @@ export default Submenu;
 
 const StyledSubMenuParent = styled("div", (props) => ({
   padding: "1.25rem 2rem",
-  fontFamily: props.mainMenuStyle?.fontFamily ? props.mainMenuStyle?.fontFamily : "inherit",
+  fontFamily: props.mainMenuStyle?.fontFamily
+    ? props.mainMenuStyle?.fontFamily
+    : "inherit",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -130,7 +112,9 @@ const StyledSubMenuParent = styled("div", (props) => ({
 
 const StyledSubMenuItem = styled("div", (props) => ({
   padding: "1.25rem 0.8rem",
-  fontFamily: props.submenuStyle?.fontFamily ? props.submenuStyle?.fontFamily : "inherit",
+  fontFamily: props.submenuStyle?.fontFamily
+    ? props.submenuStyle?.fontFamily
+    : "inherit",
   background: props.$active
     ? props.submenuStyle?.activeSubMenu?.backgroundColor
       ? props.submenuStyle?.activeSubMenu?.backgroundColor

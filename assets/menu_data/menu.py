@@ -1,66 +1,58 @@
-import assets.icons.setting
-
 menuData = [
     {
         "id": 1,
-        "title": "Overview",
-        "icon": assets.icons.setting.setting_icon,
+        "title": "Social",
+        "icon": "fa-solid fa-users",
         "child": "None",
     },
     {
         "id": 2,
-        "title": "Tickets",
-        "icon": assets.icons.setting.setting_icon,
+        "title": "Starred",
+        "icon": "fa-solid fa-star",
         "child": "None",
     },
     {
         "id": 3,
-        "title": "Ideas",
-        "icon": assets.icons.setting.setting_icon,
+        "title": "All mails",
+        "icon": "fa-solid fa-envelope",
         "child": [
             {
                 "id": 4,
-                "title": "Submenu1",
-                "icon": assets.icons.setting.setting_icon,
+                "title": "Sent",
+                "icon": "fa-solid fa-share-from-square",
                 "child": "None",
             },
             {
                 "id": 5,
-                "title": "Submenu2",
-                "icon": assets.icons.setting.setting_icon,
+                "title": "Important",
+                "icon": "fa-solid fa-tag",
+                "child": "None",
+            },
+            {
+                "id": 6,
+                "title": "Spam",
+                "icon": "fa-solid fa-triangle-exclamation",
                 "child": "None",
             },
         ],
     },
     {
-        "id": 6,
-        "title": "Contacts",
-        "icon": assets.icons.setting.setting_icon,
-        "child": "None",
-    },
-    {
         "id": 7,
-        "title": "Agents",
-        "icon": assets.icons.setting.setting_icon,
+        "title": "Bin",
+        "icon": "fa-solid fa-trash-can",
         "child": "None",
     },
     {
         "id": 8,
-        "title": "Articles",
-        "icon": assets.icons.setting.setting_icon,
-        "child": [
-            {
-                "id": 9,
-                "title": "Submenu1",
-                "icon": assets.icons.setting.setting_icon,
-                "child": "None",
-            },
-            {
-                "id": 10,
-                "title": "Submenu2",
-                "icon": assets.icons.setting.setting_icon,
-                "child": "None",
-            },
-        ],
+        "title": "Settings",
+        "icon": "fa-solid fa-gear",
+        "child": "None",
     },
+    {
+        "id": 9,
+        "title": "Logout",
+        "icon": "fa-solid fa-right-from-bracket",
+        "child": "None",
+    },
+
 ]

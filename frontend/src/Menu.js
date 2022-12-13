@@ -27,7 +27,6 @@ const Menu = (props) => {
     <MenuWrapper
       backgroundColor={menuWrapperStyle.backgroundColor}
       color={menuWrapperStyle.text}
-      borderRadius={menuWrapperStyle.borderRadius}
     >
       <MenuHeader
         appLogo={menuHeader.data.logo}
@@ -58,15 +57,15 @@ const Menu = (props) => {
           submenuStyle={submenuStyle}
           mainMenuStyle={mainMenuStyle}
         >
-          <img
+          <div
             className={css({
               width: "1.5rem",
               height: "1.5rem",
               marginRight: "0.5rem",
             })}
-            src={`data:image/png;base64, ${icon}`}
-            alt="logo"
-          />
+          >
+            <i className={icon} />
+          </div>
         </MenuBody>
       ))}
     </MenuWrapper>
@@ -80,5 +79,5 @@ const MenuWrapper = styled("div", (props) => ({
   flexDirection: "column",
   width: "100%",
   height: "100vh",
-  background: props.backgroundColor ? props.backgroundColor : "#fff",
+  background: props.backgroundColor ? props.backgroundColor : "rgb(250, 250, 250)",
 }));

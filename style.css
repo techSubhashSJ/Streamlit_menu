@@ -4,7 +4,7 @@
 
 /* For a custom theme: sidebar wrapper background */
 .appview-container > section[data-testid="stSidebar"] > div {
-  background: white;
+  background: rgb(250, 250, 250);
 }
 
 /* For a custom theme: cross button color */
