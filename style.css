@@ -1,0 +1,13 @@
+.css-1vq4p4l {
+  padding: 0;
+}
+
+/* For a custom theme: sidebar wrapper background */
+.appview-container > section[data-testid="stSidebar"] > div {
+  background: white;
+}
+
+/* For a custom theme: cross button color */
+.css-fblp2m {
+  color: inherit;
+}

@@ -50,7 +50,7 @@ else:
 init()
 
 
-def myFunc(menu, collapsable="", key=None, on_select=None, args: tuple = ()):
+def myFunc(menu, collapsable="true", key=None, on_select=None, args: tuple = ()):
     register_callback(key, on_select, *args)
 
     component_value = _component_func(menu=menu,
@@ -74,8 +74,7 @@ if not _RELEASE:
     title = "Gmail"
 
 # light theme
-    menuHeader = {"data": {"logo": logo, "title": title},
-                  "styles": {"justify": "start", "fontFamily": '"Times New Roman", Times, serif', "color": "black"}}
+    menuHeader = {"data": {"logo": logo, "title": title}}
 
     menuWrapperStyle = {}
 
@@ -85,30 +84,30 @@ if not _RELEASE:
 
     mainMenuStyle = {}
 
-    menu = {"menuWrapperStyle": menuWrapperStyle,
-            "menuHeader": menuHeader, "menuData": menuData, "submenuStyle": submenuStyle, "mainMenuStyle": mainMenuStyle}
-
 # dark theme
     # menuHeader = {"data": {"logo": logo, "title": title},
     #               "styles": {"justify": "start", "fontFamily": '"Times New Roman", Times, serif', "color": "white"}}
 
-    # menuWrapperStyle = {"backgroundColor": "black",
-    #                     "text": "white", "borderRadius": "5px"}
+    # menuWrapperStyle = {"backgroundColor": "black"}
 
     # menuData = assets.menu_data.menu.menuData
 
-    # submenuStyle = {"color": "white", "hover": {
+    # submenuStyle = {"color": "white", "fontFamily": '"Times New Roman", Times, serif',"hover": {
     #     "color": "blue", "backgroundColor": "#b4cdf0"}, "activeSubMenu": {"color": "blue", "backgroundColor": "#b4cdf0"}}
 
-    # mainMenuStyle = {"color": "white", "hover": {
+    # mainMenuStyle = {"color": "white", "fontFamily": '"Times New Roman", Times, serif', "hover": {
     #     "color": "blue", "backgroundColor": "#b4cdf0"}, "activeMenu": {"color": "blue", "backgroundColor": "#b4cdf0"}}
 
-    # menu = {"menuWrapperStyle": menuWrapperStyle,
-    #         "menuHeader": menuHeader, "menuData": menuData, "submenuStyle": submenuStyle, "mainMenuStyle": mainMenuStyle}
+    menu = {"menuWrapperStyle": menuWrapperStyle,
+            "menuHeader": menuHeader, "menuData": menuData, "submenuStyle": submenuStyle, "mainMenuStyle": mainMenuStyle}
 
     def on_menu_select(widgetkey):
         # print(st.session_state[widgetkey])
         pass
+
+    with open("style.css") as stylefile:
+        st.markdown(f"<style>{stylefile.read()}</style>",
+                    unsafe_allow_html=True)
 
     with st.sidebar:
         if "sidemenu" in st.session_state:
