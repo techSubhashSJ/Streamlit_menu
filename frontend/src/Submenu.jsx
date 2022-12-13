@@ -17,7 +17,6 @@ const Submenu = ({
 }) => {
   const [css] = useStyletron();
   const [open, setOpen] = useState(false);
-  console.log(submenuStyle);
   return (
     <>
       <StyledSubMenuParent
@@ -110,6 +109,7 @@ export default Submenu;
 
 const StyledSubMenuParent = styled("div", (props) => ({
   padding: "1.25rem 2rem",
+  fontFamily: props.mainMenuStyle?.fontFamily ? props.mainMenuStyle?.fontFamily : "inherit",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -130,6 +130,7 @@ const StyledSubMenuParent = styled("div", (props) => ({
 
 const StyledSubMenuItem = styled("div", (props) => ({
   padding: "1.25rem 0.8rem",
+  fontFamily: props.submenuStyle?.fontFamily ? props.submenuStyle?.fontFamily : "inherit",
   background: props.$active
     ? props.submenuStyle?.activeSubMenu?.backgroundColor
       ? props.submenuStyle?.activeSubMenu?.backgroundColor

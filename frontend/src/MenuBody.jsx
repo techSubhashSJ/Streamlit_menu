@@ -50,6 +50,9 @@ export default MenuBody;
 
 const StyledMenuItem = styled("div", (props) => ({
   padding: "1.25rem 2rem",
+  fontFamily: props.mainMenuStyle?.fontFamily
+    ? props.mainMenuStyle?.fontFamily
+    : "inherit",
   background: props.$active
     ? props.mainMenuStyle?.activeMenu?.backgroundColor
       ? props.mainMenuStyle?.activeMenu?.backgroundColor
