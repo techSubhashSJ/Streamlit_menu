@@ -81,5 +81,4 @@ const MenuWrapper = styled("div", (props) => ({
   width: "100%",
   height: "100vh",
   background: props.backgroundColor ? props.backgroundColor : "#fff",
-  borderRadius: props.borderRadius ? props.borderRadius : "2px",
 }));
