@@ -20,11 +20,11 @@ with open("style.css") as stylefile:
 init()
 
 
-def getMenu(menu, collapsable="true", key=None, on_select=None, args: tuple = ()):
+def getMenu(menu, collapsible=True, key=None, on_select=None, args: tuple = ()):
     register_callback(key, on_select, *args)
 
     component_value = st_component(menu=menu,
-                                   collapsable=collapsable, key=key, default=0)
+                                   collapsible=collapsible, key=key, default=0)
     # We could modify the value returned from the component if we wanted.
     # There's no need to do this in our simple example - but it's an option.
     return component_value
@@ -74,7 +74,7 @@ if not _RELEASE:
     column_left, column_center, column_right = st.columns(3)
 
     with column_center:
-        getMenu(menu, collapsable="true",
+        getMenu(menu, collapsible=False,
                 key="sidemenu", on_select=on_menu_select, args=("sidemenu",))
 
     with column_left:

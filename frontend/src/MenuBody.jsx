@@ -8,7 +8,7 @@ const MenuBody = ({
   children,
   child,
   id,
-  collapsable,
+  collapsible,
   activeMenuId,
   setActiveMenuId,
   active,
@@ -27,7 +27,7 @@ const MenuBody = ({
           activeMenuId={activeMenuId}
           setActiveMenuId={setActiveMenuId}
           child={child}
-          collapsable={collapsable}
+          collapsible={collapsible}
           submenuStyle={submenuStyle}
           mainMenuStyle={mainMenuStyle}
           submenuParaentColor={submenuParaentColor}

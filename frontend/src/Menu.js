@@ -54,7 +54,7 @@ const Menu = (props) => {
           title={title}
           child={child}
           id={id}
-          collapsable={props.args.collapsable}
+          collapsible={props.args.collapsible}
           submenuStyle={submenuStyle}
           mainMenuStyle={mainMenuStyle}
           submenuParaentColor={submenuParaentColor}

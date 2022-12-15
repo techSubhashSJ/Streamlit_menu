@@ -7,7 +7,7 @@ const Submenu = ({
   title,
   children,
   child,
-  collapsable,
+  collapsible,
   setActiveMenuId,
   activeMenuId,
   submenuStyle,
@@ -25,7 +25,7 @@ const Submenu = ({
         mainMenuStyle={mainMenuStyle}
         onClick={() => setOpen((flag) => !flag)}
         open={open}
-        collapsable={collapsable}
+        collapsible={collapsible}
         submenuParaentColor={submenuParaentColor}
       >
         <div
@@ -38,10 +38,10 @@ const Submenu = ({
         </div>
         <div
           className={css({
-            display: collapsable === "true" ? "block" : "none",
+            display: collapsible ? "block" : "none",
           })}
         >
-          {collapsable === "true" && open ? (
+          {collapsible && open ? (
             <i className="fa-solid fa-angle-down"></i>
           ) : (
             <i className="fa-solid fa-angle-up"></i>
@@ -50,7 +50,7 @@ const Submenu = ({
       </StyledSubMenuParent>
       <div
         className={css({
-          display: open || !(collapsable === "true") ? "flex" : "none",
+          display: open || !collapsible ? "flex" : "none",
           paddingLeft: "30px",
           flexDirection: "column",
           overflow: "hidden",
@@ -106,10 +106,10 @@ const StyledSubMenuParent = styled("div", (props) => ({
     : props.mainMenuStyle.color
     ? props.mainMenuStyle.color
     : "black",
-  cursor: props.collapsable === "true" ? "pointer" : "",
+  cursor: props.collapsible ? "pointer" : "",
   ":hover": {
     color:
-      props.collapsable === "true"
+      props.collapsible 
         ? props.mainMenuStyle?.hover?.color
           ? props.mainMenuStyle?.hover?.color
           : "blue"
