@@ -26,7 +26,7 @@ const Menu = (props) => {
 
   return (
     <MenuWrapper
-      backgroundColor={menuWrapperStyle.backgroundColor}
+      backgroundcolor={menuWrapperStyle.backgroundColor}
       color={menuWrapperStyle.text}
     >
       <MenuHeader
@@ -82,5 +82,5 @@ const MenuWrapper = styled("div", (props) => ({
   flexDirection: "column",
   width: "100%",
   height: "100vh",
-  background: props.backgroundColor ? props.backgroundColor : "rgb(250, 250, 250)",
+  background: props.backgroundcolor ? props.backgroundcolor : "rgb(250, 250, 250)",
 }));

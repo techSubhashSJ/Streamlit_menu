@@ -22,11 +22,11 @@ const Submenu = ({
     <>
       <StyledSubMenuParent
         title={title}
-        mainMenuStyle={mainMenuStyle}
+        main_menu_style={mainMenuStyle}
         onClick={() => setOpen((flag) => !flag)}
         open={open}
-        collapsible={collapsible}
-        submenuParaentColor={submenuParaentColor}
+        collapsible={collapsible.toString()}
+        submenu_parent_color={submenuParaentColor}
       >
         <div
           className={css({
@@ -63,7 +63,7 @@ const Submenu = ({
           <StyledSubMenuItem
             $active={id === activeMenuId}
             title={title}
-            submenuStyle={submenuStyle}
+            submenu_style={submenuStyle}
             key={index}
             onClick={() => {
               Streamlit.setComponentValue(title);
@@ -92,8 +92,8 @@ export default Submenu;
 
 const StyledSubMenuParent = styled("div", (props) => ({
   padding: "1.25rem 2rem",
-  fontFamily: props.mainMenuStyle?.fontFamily
-    ? props.mainMenuStyle?.fontFamily
+  fontFamily: props.main_menu_style?.fontFamily
+    ? props.main_menu_style?.fontFamily
     : "inherit",
   display: "flex",
   alignItems: "center",
@@ -101,17 +101,17 @@ const StyledSubMenuParent = styled("div", (props) => ({
   fontSize: "1rem",
   fontWeight: "600",
   borderLeft: "4px solid transparent",
-  color: props.submenuParaentColor
-    ? props.submenuParaentColor
-    : props.mainMenuStyle.color
-    ? props.mainMenuStyle.color
+  color: props.submenu_parent_color
+    ? props.submenu_parent_color
+    : props.main_menu_style.color
+    ? props.main_menu_style.color
     : "black",
-  cursor: props.collapsible ? "pointer" : "",
+  cursor: props.collapsible === "true" ? "pointer" : "",
   ":hover": {
     color:
-      props.collapsible 
-        ? props.mainMenuStyle?.hover?.color
-          ? props.mainMenuStyle?.hover?.color
+      props.collapsible === "true"
+        ? props.main_menu_style?.hover?.color
+          ? props.main_menu_style?.hover?.color
           : "blue"
         : "",
   },
@@ -119,20 +119,20 @@ const StyledSubMenuParent = styled("div", (props) => ({
 
 const StyledSubMenuItem = styled("div", (props) => ({
   padding: "1.25rem 0.8rem",
-  fontFamily: props.submenuStyle?.fontFamily
-    ? props.submenuStyle?.fontFamily
+  fontFamily: props.submenu_style?.fontFamily
+    ? props.submenu_style?.fontFamily
     : "inherit",
   // background: props.$active
-  //   ? props.submenuStyle?.activeSubMenu?.backgroundColor
-  //     ? props.submenuStyle?.activeSubMenu?.backgroundColor
+  //   ? props.submenu_style?.activeSubMenu?.backgroundColor
+  //     ? props.submenu_style?.activeSubMenu?.backgroundColor
   //     : "#b4cdf0"
   //   : "none",
   color: props.$active
-    ? props.submenuStyle?.activeSubMenu?.color
-      ? props.submenuStyle?.activeSubMenu?.color
+    ? props.submenu_style?.activeSubMenu?.color
+      ? props.submenu_style?.activeSubMenu?.color
       : "blue"
-    : props?.submenuStyle?.color
-    ? props?.submenuStyle?.color
+    : props?.submenu_style?.color
+    ? props?.submenu_style?.color
     : "black",
   display: "flex",
   alignItems: "center",
@@ -142,15 +142,15 @@ const StyledSubMenuItem = styled("div", (props) => ({
   width: "100%",
   borderLeft: "4px solid transparent",
   ":hover": {
-    background: props.submenuStyle?.hover?.backgroundColor
-      ? props.submenuStyle?.hover?.backgroundColor
+    background: props.submenu_style?.hover?.backgroundColor
+      ? props.submenu_style?.hover?.backgroundColor
       : "#b4cdf0",
-    color: props.submenuStyle?.hover?.color
-      ? props.submenuStyle?.hover?.color
+    color: props.submenu_style?.hover?.color
+      ? props.submenu_style?.hover?.color
       : "blue",
     borderLeft: `4px solid ${
-      props.submenuStyle?.hover?.color
-        ? props.submenuStyle?.hover?.color
+      props.submenu_style?.hover?.color
+        ? props.submenu_style?.hover?.color
         : "blue"
     }`,
   },

@@ -37,7 +37,7 @@ const MenuBody = ({
         <StyledMenuItem
           $active={active}
           title={title}
-          mainMenuStyle={mainMenuStyle}
+          main_menu_style={mainMenuStyle}
           onClick={() => {
             Streamlit.setComponentValue(title);
             setActiveMenuId(id);
@@ -56,20 +56,20 @@ export default MenuBody;
 
 const StyledMenuItem = styled("div", (props) => ({
   padding: "1.25rem 2rem",
-  fontFamily: props.mainMenuStyle?.fontFamily
-    ? props.mainMenuStyle?.fontFamily
+  fontFamily: props.main_menu_style?.fontFamily
+    ? props.main_menu_style?.fontFamily
     : "inherit",
   // background: props.$active
-  //   ? props.mainMenuStyle?.activeMenu?.backgroundColor
-  //     ? props.mainMenuStyle?.activeMenu?.backgroundColor
+  //   ? props.main_menu_style?.activeMenu?.backgroundColor
+  //     ? props.main_menu_style?.activeMenu?.backgroundColor
   //     : "#b4cdf0"
   //   : "none",
   color: props.$active
-    ? props.mainMenuStyle?.activeMenu?.color
-      ? props.mainMenuStyle?.activeMenu?.color
+    ? props.main_menu_style?.activeMenu?.color
+      ? props.main_menu_style?.activeMenu?.color
       : "blue"
-    : props.mainMenuStyle?.color
-    ? props.mainMenuStyle?.color
+    : props.main_menu_style?.color
+    ? props.main_menu_style?.color
     : "black",
   display: "flex",
   alignItems: "center",
@@ -80,15 +80,15 @@ const StyledMenuItem = styled("div", (props) => ({
   width: "100%",
   borderLeft: "4px solid transparent",
   ":hover": {
-    background: props.mainMenuStyle?.hover?.backgroundColor
-      ? props.mainMenuStyle?.hover?.backgroundColor
+    background: props.main_menu_style?.hover?.backgroundColor
+      ? props.main_menu_style?.hover?.backgroundColor
       : "#b4cdf0",
-    color: props.mainMenuStyle?.hover?.color
-      ? props.mainMenuStyle?.hover?.color
+    color: props.main_menu_style?.hover?.color
+      ? props.main_menu_style?.hover?.color
       : "blue",
     borderLeft: `4px solid ${
-      props.mainMenuStyle?.hover?.color
-        ? props.mainMenuStyle?.hover?.color
+      props.main_menu_style?.hover?.color
+        ? props.main_menu_style?.hover?.color
         : "blue"
     }`,
   },
