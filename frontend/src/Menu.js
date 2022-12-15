@@ -8,6 +8,7 @@ import MenuHeader from "./MenuHeader";
 
 const Menu = (props) => {
   const [activeMenuId, setActiveMenuId] = React.useState(null);
+  const [submenuParaentColor, setSubmenuParaentColor] = React.useState(null);
 
   const {
     menuWrapperStyle,
@@ -47,7 +48,7 @@ const Menu = (props) => {
       {menuData.map(({ icon, title, child, id }, index) => (
         <MenuBody
           key={index}
-          active={id == activeMenuId}
+          active={id === activeMenuId}
           activeMenuId={activeMenuId}
           setActiveMenuId={setActiveMenuId}
           title={title}
@@ -56,6 +57,8 @@ const Menu = (props) => {
           collapsable={props.args.collapsable}
           submenuStyle={submenuStyle}
           mainMenuStyle={mainMenuStyle}
+          submenuParaentColor={submenuParaentColor}
+          setSubmenuParaentColor={setSubmenuParaentColor}
         >
           <div
             className={css({

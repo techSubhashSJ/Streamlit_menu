@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "baseui";
 import { useStyletron } from "styletron-react";
-import ChevronDown from "baseui/icon/chevron-down";
-import ChevronUp from "baseui/icon/chevron-up";
 import { Streamlit } from "streamlit-component-lib";
 
 const Submenu = ({
@@ -14,9 +12,12 @@ const Submenu = ({
   activeMenuId,
   submenuStyle,
   mainMenuStyle,
+  setSubmenuParaentColor,
+  submenuParaentColor,
 }) => {
   const [css] = useStyletron();
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <StyledSubMenuParent
@@ -25,6 +26,7 @@ const Submenu = ({
         onClick={() => setOpen((flag) => !flag)}
         open={open}
         collapsable={collapsable}
+        submenuParaentColor={submenuParaentColor}
       >
         <div
           className={css({
@@ -66,6 +68,7 @@ const Submenu = ({
             onClick={() => {
               Streamlit.setComponentValue(title);
               setActiveMenuId(id);
+              setSubmenuParaentColor(mainMenuStyle?.hover?.color || "blue");
             }}
           >
             <div
@@ -98,7 +101,11 @@ const StyledSubMenuParent = styled("div", (props) => ({
   fontSize: "1rem",
   fontWeight: "600",
   borderLeft: "4px solid transparent",
-  color: props.mainMenuStyle.color ? props.mainMenuStyle.color : "black",
+  color: props.submenuParaentColor
+    ? props.submenuParaentColor
+    : props.mainMenuStyle.color
+    ? props.mainMenuStyle.color
+    : "black",
   cursor: props.collapsable === "true" ? "pointer" : "",
   ":hover": {
     color:
@@ -115,11 +122,11 @@ const StyledSubMenuItem = styled("div", (props) => ({
   fontFamily: props.submenuStyle?.fontFamily
     ? props.submenuStyle?.fontFamily
     : "inherit",
-  background: props.$active
-    ? props.submenuStyle?.activeSubMenu?.backgroundColor
-      ? props.submenuStyle?.activeSubMenu?.backgroundColor
-      : "#b4cdf0"
-    : "none",
+  // background: props.$active
+  //   ? props.submenuStyle?.activeSubMenu?.backgroundColor
+  //     ? props.submenuStyle?.activeSubMenu?.backgroundColor
+  //     : "#b4cdf0"
+  //   : "none",
   color: props.$active
     ? props.submenuStyle?.activeSubMenu?.color
       ? props.submenuStyle?.activeSubMenu?.color

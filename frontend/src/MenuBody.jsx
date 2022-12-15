@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "baseui";
 import Submenu from "./Submenu";
 import { Streamlit } from "streamlit-component-lib";
@@ -14,7 +14,10 @@ const MenuBody = ({
   active,
   submenuStyle,
   mainMenuStyle,
+  submenuParaentColor,
+  setSubmenuParaentColor
 }) => {
+
   return (
     <>
       {child !== "None" ? (
@@ -27,6 +30,8 @@ const MenuBody = ({
           collapsable={collapsable}
           submenuStyle={submenuStyle}
           mainMenuStyle={mainMenuStyle}
+          submenuParaentColor={submenuParaentColor}
+          setSubmenuParaentColor={setSubmenuParaentColor}
         />
       ) : (
         <StyledMenuItem
@@ -36,6 +41,7 @@ const MenuBody = ({
           onClick={() => {
             Streamlit.setComponentValue(title);
             setActiveMenuId(id);
+            setSubmenuParaentColor(null);
           }}
         >
           {children}
@@ -53,11 +59,11 @@ const StyledMenuItem = styled("div", (props) => ({
   fontFamily: props.mainMenuStyle?.fontFamily
     ? props.mainMenuStyle?.fontFamily
     : "inherit",
-  background: props.$active
-    ? props.mainMenuStyle?.activeMenu?.backgroundColor
-      ? props.mainMenuStyle?.activeMenu?.backgroundColor
-      : "#b4cdf0"
-    : "none",
+  // background: props.$active
+  //   ? props.mainMenuStyle?.activeMenu?.backgroundColor
+  //     ? props.mainMenuStyle?.activeMenu?.backgroundColor
+  //     : "#b4cdf0"
+  //   : "none",
   color: props.$active
     ? props.mainMenuStyle?.activeMenu?.color
       ? props.mainMenuStyle?.activeMenu?.color
