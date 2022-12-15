@@ -20,7 +20,7 @@ _RELEASE = False
 # best practice.
 
 if not _RELEASE:
-    _component_func = components.declare_component(
+    st_component = components.declare_component(
         # We give the component a simple, descriptive name ("my_component"
         # does not fit this bill, so please choose something better for your
         # own component :)
@@ -36,4 +36,4 @@ else:
     # build directory:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("Menu", path=build_dir)
+    st_component = components.declare_component("Menu", path=build_dir)

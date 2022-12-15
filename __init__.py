@@ -1,8 +1,15 @@
+import streamlit as st
+
 import assets.app_logo.logo
 import assets.menu_data.menu
 from register import register_callback, init
 
-from main import _component_func, _RELEASE
+from main import st_component, _RELEASE
+
+# Overridden inbuilt streamlit css
+with open("style.css") as stylefile:
+    st.markdown(f"<style>{stylefile.read()}</style>",
+                unsafe_allow_html=True)
 
 # Create a wrapper function for the component. This is an optional
 # best practice - we could simply expose the component function returned by
@@ -12,11 +19,12 @@ from main import _component_func, _RELEASE
 
 init()
 
+
 def getMenu(menu, collapsable="true", key=None, on_select=None, args: tuple = ()):
     register_callback(key, on_select, *args)
 
-    component_value = _component_func(menu=menu,
-                                      collapsable=collapsable, key=key, default=0)
+    component_value = st_component(menu=menu,
+                                   collapsable=collapsable, key=key, default=0)
     # We could modify the value returned from the component if we wanted.
     # There's no need to do this in our simple example - but it's an option.
     return component_value
@@ -26,11 +34,7 @@ def getMenu(menu, collapsable="true", key=None, on_select=None, args: tuple = ()
 # During development, we can run this just as we would any other Streamlit
 # app: `$ streamlit run my_component/__init__.py`
 if not _RELEASE:
-    import streamlit as st
-
     st.subheader("Menu Component")
-
-    # # Create an instance of our component with a constant `name` arg, and
 
     logo = assets.app_logo.logo.logo
     title = "Gmail"
@@ -67,16 +71,11 @@ if not _RELEASE:
         # print(st.session_state[widgetkey])
         pass
 
-    # Overridden inbuilt streamlit css 
-    with open("style.css") as stylefile:
-        st.markdown(f"<style>{stylefile.read()}</style>",
-                    unsafe_allow_html=True)
-
     column_left, column_center, column_right = st.columns(3)
 
     with column_center:
         getMenu(menu, collapsable="true",
-               key="sidemenu", on_select=on_menu_select, args=("sidemenu",))
+                key="sidemenu", on_select=on_menu_select, args=("sidemenu",))
 
     with column_left:
         st.write('You have selected: ', st.session_state["sidemenu"])
