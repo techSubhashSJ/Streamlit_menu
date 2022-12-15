@@ -20,7 +20,7 @@ const MenuBody = ({
 
   return (
     <>
-      {child !== "None" ? (
+      {child ? (
         <Submenu
           title={title}
           children={children}
