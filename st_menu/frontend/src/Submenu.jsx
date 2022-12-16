@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { styled } from "baseui";
 import { useStyletron } from "styletron-react";
 import { Streamlit } from "streamlit-component-lib";
+import MenuIcon from "./MenuIcon";
 
 const Submenu = ({
   title,
-  children,
   child,
   collapsible,
   setActiveMenuId,
@@ -14,6 +14,7 @@ const Submenu = ({
   mainMenuStyle,
   setSubmenuParaentColor,
   submenuParaentColor,
+  icon,
 }) => {
   const [css] = useStyletron();
   const [open, setOpen] = useState(false);
@@ -33,19 +34,12 @@ const Submenu = ({
         collapsible={collapsible.toString()}
         submenu_parent_color={checkParent() ? submenuParaentColor : null}
       >
-        <div
-          className={css({
-            display: "flex",
-          })}
-        >
-          {children}
+        <div className={css({ display: "flex" })}>
+          <MenuIcon icon={icon} />
           {title}
         </div>
-        <div
-          className={css({
-            display: collapsible ? "block" : "none",
-          })}
-        >
+
+        <div className={css({ display: collapsible ? "block" : "none" })}>
           {collapsible && open ? (
             <i className="fa-solid fa-angle-down"></i>
           ) : (
@@ -53,6 +47,7 @@ const Submenu = ({
           )}
         </div>
       </StyledSubMenuParent>
+
       <div
         className={css({
           display: open || !collapsible ? "flex" : "none",
@@ -76,15 +71,7 @@ const Submenu = ({
               setSubmenuParaentColor(mainMenuStyle?.hover?.color || "blue");
             }}
           >
-            <div
-              className={css({
-                width: "1.5rem",
-                height: "1.5rem",
-                marginRight: "0.5rem",
-              })}
-            >
-              <i className={icon} />
-            </div>
+            <MenuIcon icon={icon} />
             {title}
           </StyledSubMenuItem>
         ))}

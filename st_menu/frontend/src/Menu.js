@@ -59,17 +59,8 @@ const Menu = (props) => {
           mainMenuStyle={mainMenuStyle}
           submenuParaentColor={submenuParaentColor}
           setSubmenuParaentColor={setSubmenuParaentColor}
-        >
-          <div
-            className={css({
-              width: "1.5rem",
-              height: "1.5rem",
-              marginRight: "0.5rem",
-            })}
-          >
-            <i className={icon} />
-          </div>
-        </MenuBody>
+          icon={icon}
+        />
       ))}
     </MenuWrapper>
   );
@@ -82,5 +73,7 @@ const MenuWrapper = styled("div", (props) => ({
   flexDirection: "column",
   width: "100%",
   height: "100vh",
-  background: props.backgroundcolor ? props.backgroundcolor : "rgb(250, 250, 250)",
+  background: props.backgroundcolor
+    ? props.backgroundcolor
+    : "rgb(250, 250, 250)",
 }));

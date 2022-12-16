@@ -1,11 +1,11 @@
 import React from "react";
-import { styled } from "baseui";
+import { styled, useStyletron } from "baseui";
 import Submenu from "./Submenu";
 import { Streamlit } from "streamlit-component-lib";
+import MenuIcon from "./MenuIcon";
 
 const MenuBody = ({
   title,
-  children,
   child,
   id,
   collapsible,
@@ -15,7 +15,8 @@ const MenuBody = ({
   submenuStyle,
   mainMenuStyle,
   submenuParaentColor,
-  setSubmenuParaentColor
+  setSubmenuParaentColor,
+  icon,
 }) => {
 
   return (
@@ -23,7 +24,6 @@ const MenuBody = ({
       {child ? (
         <Submenu
           title={title}
-          children={children}
           activeMenuId={activeMenuId}
           setActiveMenuId={setActiveMenuId}
           child={child}
@@ -32,6 +32,7 @@ const MenuBody = ({
           mainMenuStyle={mainMenuStyle}
           submenuParaentColor={submenuParaentColor}
           setSubmenuParaentColor={setSubmenuParaentColor}
+          icon={icon}
         />
       ) : (
         <StyledMenuItem
@@ -44,7 +45,7 @@ const MenuBody = ({
             setSubmenuParaentColor(null);
           }}
         >
-          {children}
+          <MenuIcon icon={icon} />
           {title}
         </StyledMenuItem>
       )}
