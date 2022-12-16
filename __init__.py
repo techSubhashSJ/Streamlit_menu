@@ -1,84 +1,56 @@
 import streamlit as st
+import data.app_logo.logo
+import data.menu_data.menu
+from st_menu import getMenu
 
-import assets.app_logo.logo
-import assets.menu_data.menu
-from register import register_callback, init
-
-from main import st_component, _RELEASE
-
-# Overridden inbuilt streamlit css
 with open("style.css") as stylefile:
     st.markdown(f"<style>{stylefile.read()}</style>",
                 unsafe_allow_html=True)
 
-# Create a wrapper function for the component. This is an optional
-# best practice - we could simply expose the component function returned by
-# `declare_component` and call it done. The wrapper allows us to customize
-# our component's API: we can pre-process its input args, post-process its
-# output value, and add a docstring for users.
+st.subheader("Menu Component")
 
-init()
+menuData = data.menu_data.menu.menuData
 
+logo = data.app_logo.logo.logo
+title = "Gmail"
 
-def getMenu(menu, collapsible=True, key=None, on_select=None, args: tuple = ()):
-    register_callback(key, on_select, *args)
-
-    component_value = st_component(menu=menu,
-                                   collapsible=collapsible, key=key, default=0)
-    # We could modify the value returned from the component if we wanted.
-    # There's no need to do this in our simple example - but it's an option.
-    return component_value
-
-
-# Add some test code to play with the component while it's in development.
-# During development, we can run this just as we would any other Streamlit
-# app: `$ streamlit run my_component/__init__.py`
-if not _RELEASE:
-    st.subheader("Menu Component")
-
-    logo = assets.app_logo.logo.logo
-    title = "Gmail"
+collapsible = True
 
 # light theme
-    menuHeader = {"data": {"logo": logo, "title": title}}
-
-    menuWrapperStyle = {}
-
-    menuData = assets.menu_data.menu.menuData
-
-    submenuStyle = {}
-
-    mainMenuStyle = {}
+menuHeader = {"data": {"logo": logo, "title": title}}
+menuWrapperStyle = {}
+submenuStyle = {}
+mainMenuStyle = {}
 
 # dark theme
-    # menuHeader = {"data": {"logo": logo, "title": title},
-    #               "styles": {"justify": "start", "fontFamily": '"Times New Roman", Times, serif', "color": "white"}}
+# menuHeader = {"data": {"logo": logo, "title": title},
+#               "styles": {"justify": "start", "fontFamily": '"Times New Roman", Times, serif', "color": "white"}}
 
-    # menuWrapperStyle = {"backgroundColor": "black"}
+# menuWrapperStyle = {"backgroundColor": "black"}
 
-    # menuData = assets.menu_data.menu.menuData
+# submenuStyle = {"color": "white", "fontFamily": '"Times New Roman", Times, serif', "hover": {
+#     "color": "blue", "backgroundColor": "#b4cdf0"}, "activeSubMenu": {"color": "blue", "backgroundColor": "#b4cdf0"}}
 
-    # submenuStyle = {"color": "white", "fontFamily": '"Times New Roman", Times, serif',"hover": {
-    #     "color": "blue", "backgroundColor": "#b4cdf0"}, "activeSubMenu": {"color": "blue", "backgroundColor": "#b4cdf0"}}
+# mainMenuStyle = {"color": "white", "fontFamily": '"Times New Roman", Times, serif', "hover": {
+#     "color": "blue", "backgroundColor": "#b4cdf0"}, "activeMenu": {"color": "blue", "backgroundColor": "#b4cdf0"}}
 
-    # mainMenuStyle = {"color": "white", "fontFamily": '"Times New Roman", Times, serif', "hover": {
-    #     "color": "blue", "backgroundColor": "#b4cdf0"}, "activeMenu": {"color": "blue", "backgroundColor": "#b4cdf0"}}
+menu = {"menuWrapperStyle": menuWrapperStyle,
+        "menuHeader": menuHeader, "menuData": menuData, "submenuStyle": submenuStyle, "mainMenuStyle": mainMenuStyle}
 
-    menu = {"menuWrapperStyle": menuWrapperStyle,
-            "menuHeader": menuHeader, "menuData": menuData, "submenuStyle": submenuStyle, "mainMenuStyle": mainMenuStyle}
 
-    def on_menu_select(widgetkey):
-        # print(st.session_state[widgetkey])
-        pass
+def on_menu_select(widgetkey):
+    # print(st.session_state[widgetkey])
+    pass
 
-    column_left, column_center, column_right = st.columns(3)
 
-    with column_center:
-        getMenu(menu, collapsible=False,
-                key="sidemenu", on_select=on_menu_select, args=("sidemenu",))
+column_left, column_center, column_right = st.columns(3)
 
-    with column_left:
-        st.write('You have selected: ', st.session_state["sidemenu"])
+with column_center:
+    getMenu(menu, collapsible,
+            key="sidemenu", on_select=on_menu_select, args=("sidemenu",))
 
-    with column_right:
-        st.write("right side")
+with column_left:
+    st.write('You have selected: ', st.session_state["sidemenu"])
+
+with column_right:
+    st.write("right side")
