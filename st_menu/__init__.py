@@ -1,9 +1,7 @@
-
 from st_menu.register import register_callback, init
 
 import os
 import streamlit.components.v1 as components
-
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
 # the component, and True when we're ready to package and distribute it.
@@ -41,7 +39,6 @@ else:
     build_dir = os.path.join(parent_dir, "frontend/build")
     st_component = components.declare_component("Menu", path=build_dir)
 
-
 # Overridden inbuilt streamlit css
 
 # Create a wrapper function for the component. This is an optional
@@ -53,11 +50,17 @@ else:
 init()
 
 
-def getMenu(menu, collapsible=True, key=None, on_select=None, args: tuple = ()):
+def getMenu(menu,
+            collapsible=True,
+            key=None,
+            on_select=None,
+            args: tuple = ()):
     register_callback(key, on_select, *args)
 
     component_value = st_component(menu=menu,
-                                   collapsible=collapsible, key=key, default=0)
+                                   collapsible=collapsible,
+                                   key=key,
+                                   default=0)
     # We could modify the value returned from the component if we wanted.
     # There's no need to do this in our simple example - but it's an option.
     return component_value

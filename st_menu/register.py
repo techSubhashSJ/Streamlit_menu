@@ -3,6 +3,7 @@ from streamlit.components.v1 import components as _components
 
 
 def _patch_register_widget(register_widget):
+
     def wrapper_register_widget(*args, **kwargs):
         user_key = kwargs.get("user_key", None)
         callbacks = _state.get("_components_callbacks", None)
@@ -16,7 +17,10 @@ def _patch_register_widget(register_widget):
         # Call the original function with updated kwargs.
         result = register_widget(*args, **kwargs)
         return result
+
     return wrapper_register_widget
+
+
 # Patch function only once.
 
 
@@ -27,13 +31,14 @@ def init():
             _components.register_widget)
 
 
-def register_callback(element_key, callback, *callback_args, **callback_kwargs):
+def register_callback(element_key, callback, *callback_args,
+                      **callback_kwargs):
     # Initialize callbacks store.
     if "_components_callbacks" not in _state:
         _state._components_callbacks = {}
     # Register a callback for a given element_key.
-    _state._components_callbacks[element_key] = (
-        callback, callback_args, callback_kwargs)
+    _state._components_callbacks[element_key] = (callback, callback_args,
+                                                 callback_kwargs)
 
 
 def get_component_rerender_count(element_key):
@@ -47,6 +52,6 @@ def get_component_rerender_count(element_key):
 
 def set_component_rerender_count(element_key):
     # This funtion will record the rerendering count
-    _state["_component_render_count"][element_key] = get_component_rerender_count(
-        element_key) + 1
+    _state["_component_render_count"][
+        element_key] = get_component_rerender_count(element_key) + 1
     return _state["_component_render_count"][element_key]

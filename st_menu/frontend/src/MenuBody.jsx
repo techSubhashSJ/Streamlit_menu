@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, useStyletron } from "baseui";
+import { styled } from "baseui";
 import Submenu from "./Submenu";
 import { Streamlit } from "streamlit-component-lib";
 import MenuIcon from "./MenuIcon";

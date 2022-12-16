@@ -1,3 +1,10 @@
+import data.menu_logo.logo
+import data.menu_style.style
+
+logo = data.menu_logo.logo.logo
+
+collapsible = True
+title = "Gmail"
 menuData = [
     {
         "id": 1,
@@ -12,9 +19,12 @@ menuData = [
         "children": None,
     },
     {
-        "id": 3,
-        "title": "All mails",
-        "icon": "fa-solid fa-envelope",
+        "id":
+        3,
+        "title":
+        "All mails",
+        "icon":
+        "fa-solid fa-envelope",
         "children": [
             {
                 "id": 4,
@@ -54,5 +64,15 @@ menuData = [
         "icon": "fa-solid fa-right-from-bracket",
         "children": None,
     },
-
 ]
+
+menuHeader = {"logo": logo, "title": title}
+
+menu = {
+    "menuHeader": menuHeader,
+    "menuData": menuData,
+    "menuWrapperStyle": data.menu_style.style.menuWrapperStyle,
+    "menuHeaderStyle": data.menu_style.style.menuHeaderStyle,
+    "mainMenuStyle": data.menu_style.style.mainMenuStyle,
+    "submenuStyle": data.menu_style.style.submenuStyle,
+}

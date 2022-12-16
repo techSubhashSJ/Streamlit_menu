@@ -29,7 +29,7 @@ const MenuHeader = (props) => {
 export default MenuHeader;
 
 const Logo = styled("div", (props) => ({
-  padding: "1rem 2rem",
+  padding: "1rem 1rem",
   display: "flex",
   alignItems: "center",
   justifyContent: props.justify ? props.justify : "start",

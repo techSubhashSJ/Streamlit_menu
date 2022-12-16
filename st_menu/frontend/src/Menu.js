@@ -11,11 +11,12 @@ const Menu = (props) => {
   const [submenuParaentColor, setSubmenuParaentColor] = React.useState(null);
 
   const {
-    menuWrapperStyle,
     menuHeader,
-    submenuStyle,
-    mainMenuStyle,
     menuData,
+    menuWrapperStyle,
+    menuHeaderStyle,
+    mainMenuStyle,
+    submenuStyle,
   } = props.args.menu;
 
   useEffect(() => {
@@ -30,9 +31,9 @@ const Menu = (props) => {
       color={menuWrapperStyle.text}
     >
       <MenuHeader
-        appLogo={menuHeader.data.logo}
-        appName={menuHeader.data.title}
-        styles={menuHeader.styles}
+        appLogo={menuHeader.logo}
+        appName={menuHeader.title}
+        styles={menuHeaderStyle}
       />
 
       <div>
