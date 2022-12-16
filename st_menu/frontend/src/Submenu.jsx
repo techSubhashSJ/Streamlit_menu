@@ -6,7 +6,7 @@ import MenuIcon from "./MenuIcon";
 
 const Submenu = ({
   title,
-  child,
+  children,
   collapsible,
   setActiveMenuId,
   activeMenuId,
@@ -20,7 +20,7 @@ const Submenu = ({
   const [open, setOpen] = useState(false);
 
   const checkParent = () => {
-    let children_ids = child.map((obj) => obj.id);
+    let children_ids = children.map((obj) => obj.id);
     return children_ids.includes(activeMenuId);
   };
 
@@ -59,7 +59,7 @@ const Submenu = ({
           },
         })}
       >
-        {child?.map(({ icon, title, id }, index) => (
+        {children?.map(({ icon, title, id }, index) => (
           <StyledSubMenuItem
             $active={id === activeMenuId}
             title={title}

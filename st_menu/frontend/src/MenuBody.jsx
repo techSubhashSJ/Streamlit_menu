@@ -6,7 +6,7 @@ import MenuIcon from "./MenuIcon";
 
 const MenuBody = ({
   title,
-  child,
+  children,
   id,
   collapsible,
   activeMenuId,
@@ -21,12 +21,12 @@ const MenuBody = ({
 
   return (
     <>
-      {child ? (
+      {children ? (
         <Submenu
           title={title}
           activeMenuId={activeMenuId}
           setActiveMenuId={setActiveMenuId}
-          child={child}
+          children={children}
           collapsible={collapsible}
           submenuStyle={submenuStyle}
           mainMenuStyle={mainMenuStyle}

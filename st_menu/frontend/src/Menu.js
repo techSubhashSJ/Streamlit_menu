@@ -45,14 +45,14 @@ const Menu = (props) => {
         />
       </div>
 
-      {menuData.map(({ icon, title, child, id }, index) => (
+      {menuData.map(({ icon, title, children, id }, index) => (
         <MenuBody
           key={index}
           active={id === activeMenuId}
           activeMenuId={activeMenuId}
           setActiveMenuId={setActiveMenuId}
           title={title}
-          child={child}
+          children={children}
           id={id}
           collapsible={props.args.collapsible}
           submenuStyle={submenuStyle}
