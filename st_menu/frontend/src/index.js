@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
 import { LightTheme, BaseProvider, styled } from "baseui";
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const engine = new Styletron();
 const Centered = styled("div", {
