@@ -3,7 +3,7 @@ import data.menu_style.style
 
 logo = data.menu_logo.logo.logo
 
-collapsible = True
+collapsible = False
 title = "Gmail"
 menuData = [
     {
