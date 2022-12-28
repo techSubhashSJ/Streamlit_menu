@@ -18,7 +18,6 @@ const MenuBody = ({
   setSubmenuParaentColor,
   icon,
 }) => {
-
   return (
     <>
       {children ? (
@@ -75,11 +74,13 @@ const StyledMenuItem = styled("div", (props) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-start",
-  fontSize: "1rem",
+  fontSize: "1.1rem",
   fontWeight: "600",
   cursor: "pointer",
   width: "100%",
-  borderLeft: "4px solid transparent",
+  borderLeft: props?.main_menu_style?.hover?.leftBorder
+    ? "4px solid transparent"
+    : "",
   ":hover": {
     background: props.main_menu_style?.hover?.backgroundColor
       ? props.main_menu_style?.hover?.backgroundColor
@@ -87,10 +88,12 @@ const StyledMenuItem = styled("div", (props) => ({
     color: props.main_menu_style?.hover?.color
       ? props.main_menu_style?.hover?.color
       : "blue",
-    borderLeft: `4px solid ${
-      props.main_menu_style?.hover?.color
-        ? props.main_menu_style?.hover?.color
-        : "blue"
-    }`,
+    borderLeft: props?.main_menu_style?.hover?.leftBorder
+      ? `4px solid ${
+          props.main_menu_style?.hover?.color
+            ? props.main_menu_style?.hover?.color
+            : "blue"
+        }`
+      : "",
   },
 }));

@@ -17,6 +17,7 @@ const Menu = (props) => {
     menuHeaderStyle,
     mainMenuStyle,
     submenuStyle,
+    dividerBetweenHeaderAndBody
   } = props.args.menu;
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const Menu = (props) => {
         styles={menuHeaderStyle}
       />
 
-      <div>
+      {dividerBetweenHeaderAndBody && <div>
         <StyledDivider
           $size={SIZE.section}
           className={css({
@@ -44,7 +45,7 @@ const Menu = (props) => {
             marginRight: "1rem",
           })}
         />
-      </div>
+      </div>}
 
       {menuData.map(({ icon, title, children, id }, index) => (
         <MenuBody

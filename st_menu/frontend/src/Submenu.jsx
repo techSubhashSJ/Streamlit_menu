@@ -90,7 +90,7 @@ const StyledSubMenuParent = styled("div", (props) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  fontSize: "1rem",
+  fontSize: "1.1rem",
   fontWeight: "600",
   borderLeft: "4px solid transparent",
   color: props.submenu_parent_color
@@ -129,10 +129,12 @@ const StyledSubMenuItem = styled("div", (props) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-start",
-  fontSize: "1rem",
+  fontSize: "1.1rem",
   cursor: "pointer",
   width: "100%",
-  borderLeft: "4px solid transparent",
+  borderLeft: props?.submenu_style?.hover?.leftBorder
+    ? "4px solid transparent"
+    : "",
   ":hover": {
     background: props.submenu_style?.hover?.backgroundColor
       ? props.submenu_style?.hover?.backgroundColor
@@ -140,10 +142,12 @@ const StyledSubMenuItem = styled("div", (props) => ({
     color: props.submenu_style?.hover?.color
       ? props.submenu_style?.hover?.color
       : "blue",
-    borderLeft: `4px solid ${
-      props.submenu_style?.hover?.color
-        ? props.submenu_style?.hover?.color
-        : "blue"
-    }`,
+    borderLeft: props?.submenu_style?.hover?.leftBorder
+      ? `4px solid ${
+          props.submenu_style?.hover?.color
+            ? props.submenu_style?.hover?.color
+            : "blue"
+        }`
+      : "",
   },
 }));

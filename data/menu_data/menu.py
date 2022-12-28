@@ -4,7 +4,8 @@ import data.menu_style.style
 logo = data.menu_logo.logo.logo
 
 collapsible = False
-title = "Gmail"
+title = "Gmail Clone"
+
 menuData = [
     {
         "id": 1,
@@ -35,7 +36,7 @@ menuData = [
             {
                 "id": 5,
                 "title": "Important",
-                "icon": "fa-solid fa-tag",
+                "icon": "fa-solid fa-note-sticky",
                 "children": None,
             },
             {
@@ -71,6 +72,8 @@ menuHeader = {"logo": logo, "title": title}
 menu = {
     "menuHeader": menuHeader,
     "menuData": menuData,
+    "dividerBetweenHeaderAndBody":
+    data.menu_style.style.dividerBetweenHeaderAndBody,
     "menuWrapperStyle": data.menu_style.style.menuWrapperStyle,
     "menuHeaderStyle": data.menu_style.style.menuHeaderStyle,
     "mainMenuStyle": data.menu_style.style.mainMenuStyle,
