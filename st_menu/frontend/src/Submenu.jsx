@@ -92,7 +92,9 @@ const StyledSubMenuParent = styled("div", (props) => ({
   justifyContent: "space-between",
   fontSize: "1.1rem",
   fontWeight: "600",
-  borderLeft: "4px solid transparent",
+  borderLeft: props?.main_menu_style?.hover?.leftBorder
+    ? "4px solid transparent"
+    : "",
   color: props.submenu_parent_color
     ? props.submenu_parent_color
     : props.main_menu_style.color
