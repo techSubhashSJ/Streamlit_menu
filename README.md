@@ -140,15 +140,15 @@ In order to access the menu component, the user must first give the required dat
 
 1. Default Collapsible Menu
 
-   <img width="960" alt="collapsible menu" src="https://user-images.githubusercontent.com/111497133/209087404-7aefed2e-f2cd-4428-b648-7cbb7e1815a9.PNG">
+   <img width="960" alt="collapsible menu" src="https://user-images.githubusercontent.com/111497133/209765886-3c358640-d7f8-49f0-bf58-9e4b4733202c.PNG">
 
 2. Default Expandable Menu
    
-   <img width="960" alt="non collapsible menu" src="https://user-images.githubusercontent.com/111497133/209087666-c9042345-5aa9-4479-8359-edeffe090933.PNG">
+   <img width="958" alt="expandible menu" src="https://user-images.githubusercontent.com/111497133/209765933-dc515a41-ab7e-44de-8489-f4ad1868cd8e.PNG">
 
-3. Custom Dark Theme Expandable Menu
+3. Custom Theme Expandable Menu
    
-   <img width="958" alt="custom dark theme menu" src="https://user-images.githubusercontent.com/111497133/209088226-0312d874-985f-4300-9d8e-94800ae0c757.PNG">
+   <img width="959" alt="Custome theme menu" src="https://user-images.githubusercontent.com/111497133/209764457-d71b1bee-6b02-49d8-a923-fb79a3172211.PNG">
 
 ## Conclusion
 The user can make use of this highly customizable menu component to build a streamlit menu as per their needs.
