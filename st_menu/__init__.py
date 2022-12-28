@@ -38,7 +38,7 @@ else:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     build_dir = os.path.join(parent_dir, "frontend/build")
     print(build_dir)
-    st_component = components.declare_component("Menu", path=build_dir)
+    st_component = components.declare_component("Menu", url=" http://localhost:3000")
 
 # Overridden inbuilt streamlit css
 
