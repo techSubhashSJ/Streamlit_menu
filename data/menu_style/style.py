@@ -1,5 +1,5 @@
 #divider
-dividerBetweenHeaderAndBody = True
+dividerBetweenHeaderAndBody = False
 
 #light theme
 menuHeaderStyle = {}
